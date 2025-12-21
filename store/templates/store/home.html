@@ -1,0 +1,31 @@
+<h2>Products</h2>
+
+<h3>Categories</h3>
+<ul>
+{% for cat in categories %}
+  <li>
+    <a href="{% url 'category_products' cat.id %}">
+        {{ cat.name }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px;">
+{% for product in products %}
+  <div style="border:1px solid #ccc; padding:10px; width:220px;">
+    
+    <img src="{{ product.image.url }}" width="200" height="200"><br>
+
+    <strong>{{ product.name }}</strong><br>
+    Category: {{ product.category.name }}<br>
+    Price: ₹{{ product.price }}<br><br>
+
+   <a href="{% url 'product_detail' product.id %}">
+    <button>View Product</button>
+   </a>
+
+  </div>
+{% endfor %}
+
+</div>
