@@ -1,0 +1,25 @@
+<h2>Your Cart</h2>
+
+{% if products %}
+<table border="1" cellpadding="10">
+<tr>
+  <th>Product</th>
+  <th>Price</th>
+  <th>Qty</th>
+  <th>Total</th>
+</tr>
+
+{% for p in products %}
+<tr>
+  <td>{{ p.name }}</td>
+  <td>₹{{ p.price }}</td>
+  <td>{{ p.qty }}</td>
+  <td>₹{{ p.subtotal }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h3>Grand Total: ₹{{ total }}</h3>
+{% else %}
+<p>Your cart is empty</p>
+{% endif %}

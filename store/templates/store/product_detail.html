@@ -1,3 +1,14 @@
+{% if messages %}
+  {% for message in messages %}
+    <div style="background:#d4edda; padding:10px;">
+      {{ message }}
+      <a href="{% url 'cart' %}">
+        <strong>View Cart</strong>
+      </a>
+    </div>
+  {% endfor %}
+{% endif %}
+
 <h2>{{ product.name }}</h2>
 
 <img src="{{ product.image.url }}" width="300"><br><br>

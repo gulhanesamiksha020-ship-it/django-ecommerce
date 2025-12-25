@@ -4,12 +4,25 @@
 <ul>
 {% for cat in categories %}
   <li>
-    <a href="{% url 'category_products' cat.id %}">
+    <a href="{% url 'category_products' cat.slug %}">
         {{ cat.name }}
     </a>
   </li>
 {% endfor %}
 </ul>
+<!--view cart button -->
+{% for message in messages %}
+  <div style="background:#d4edda; padding:10px; margin-bottom:10px;">
+    {{ message }}
+    
+  </div>
+{% endfor %}
+
+<a href="{% url 'cart' %}" style="margin-left:20px;">
+      <strong>View Cart</strong>
+    </a>
+
+
 
 <div style="display:flex; flex-wrap:wrap; gap:20px;">
 {% for product in products %}
@@ -22,8 +35,13 @@
     Price: ₹{{ product.price }}<br><br>
 
    <a href="{% url 'product_detail' product.id %}">
-    <button>View Product</button>
+    <button>View Product</button><br>
+    <br>
    </a>
+   <a href="{% url 'add_to_cart' product.id %}">
+  <button>Add to Cart</button>
+</a>
+
 
   </div>
 {% endfor %}
